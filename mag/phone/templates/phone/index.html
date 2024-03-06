@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'phone/styles.css' %}">
+</head>
+<body>
+        <nav>
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <img class="h-8 w-8" src="{% static 'phone/images/shop.png' %}" alt="logo"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <h4>
+            {% for item in items %}
+            <a href="{% url 'phone:detail' item.id %}">
+            ID: {{item.id}} | Имя: {{item.title}} |Цена: {{item.price}} |Описание: {{item.descriptions}} <br/>
+            <a>
+            {% endfor %}
+        </h4>
+</body>
+</html>
