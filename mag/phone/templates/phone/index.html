@@ -1,13 +1,32 @@
 {% extends "phone/base.html" %}
 
 {% block content %}
+<main class="mt-10 mx-auto max-w-7x1 px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+    <div class="sm:text-center lg:text-left">
+        <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+            <span class="block xl:inline">Эсклюзивные товары</span>
+            <span class="block xl:inline text-green-500">Цены</span>
+        </h1>
+        <p>Заказ</p>
+    </div>
 
-        <h4>
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-col-3 lg:grid-col-3 gap-3">
             {% for item in items %}
             <a href="{% url 'phone:detail' item.id %}">
-            ID: {{item.id}} | Имя: {{item.title}} |Цена: {{item.price}} |Описание: {{item.descriptions}} <br/>
-            <a>
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img class="w-full h-[400px]" src="{{item.image.url}}" alt="">
+                    <div class="px-6 py-4">
+                        <p class="fond-bold text-xl mb-2">{{item.title}}</p>
+                        <p class="fond-bold text-xl text-green-500 mb-2">$ {{item.price}}</p>
+                        <p class="text-gray-700 text-base">{{item.description}}</p>
+                    </div>
+                </div>
+                </a>
             {% endfor %}
-        </h4>
+</div>
+
+</main>
+
+
 {% endblock content %}
 
