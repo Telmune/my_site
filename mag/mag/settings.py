@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'users',
     'phone',
 ]
 
@@ -121,3 +122,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = 'phone:index'
+LOGIN_URL = 'users:login'
+# LOGOUT_REDIRECT_URL = 'phone:index'
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Ow5uXBHX81zaQOggWScuMLMeoZtwlBY6aHbBqvoUH86zolDeRERnYptHdRTXvAJxgnx0vk2fdkvVwJ1oCPwPFRt00EBfYdQfP'
+STRIPE_SECRET_KEY = 'sk_test_51Ow5uXBHX81zaQOglwjSbzkxEhjjh0G7VVDgblEAB5bCpHqbe5vfnxRVxGRsLC1BmO2K2rHdNoteZSg0vwA34oTp001yzeomjQ'

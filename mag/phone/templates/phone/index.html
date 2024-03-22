@@ -5,9 +5,15 @@
     <div class="sm:text-center lg:text-left">
         <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
             <span class="block xl:inline">Эсклюзивные товары</span>
-            <span class="block xl:inline text-green-500">Цены</span>
         </h1>
-        <p>Заказ</p>
+    </div>
+
+    <div class="mt-5 p-10 justify-center">
+        <h2>Search</h2>
+        <form action="" method="get">
+            <input type="text" name="search" id="">
+        </form>
+
     </div>
 
     <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-col-3 lg:grid-col-3 gap-3">
@@ -16,14 +22,37 @@
                 <div class="rounded overflow-hidden shadow-lg">
                     <img class="w-full h-[400px]" src="{{item.image.url}}" alt="">
                     <div class="px-6 py-4">
-                        <p class="fond-bold text-xl mb-2">{{item.title}}</p>
+                        <p class="fond-bold text-xl mb-2">{{item.name}}</p>
                         <p class="fond-bold text-xl text-green-500 mb-2">$ {{item.price}}</p>
+                        <p class="fond-bold text-xl text-indigo-500 mb-2"> {{item.seller}}</p>
                         <p class="text-gray-700 text-base">{{item.description}}</p>
                     </div>
                 </div>
                 </a>
             {% endfor %}
 </div>
+
+   <div>
+
+
+			<span>
+				{% if page_obj.has_previous %}
+				  <a href="?page=1">First</a>
+				  <a href="?page={{ page_obj.previous_page_number}}">Previous</a>
+				{% endif %}
+			</span>
+			<span>
+				{{ page_obj }}
+			</span>
+
+			<span>
+				{% if page_obj.has_next %}
+				  <a href="?page={{ page_obj.next_page_number}}">Next</a>
+				  <a href="?page={{ page_obj.paginator.num_pages}}">Last</a>
+				{% endif %}
+			</span>
+		</div>
+
 
 </main>
 

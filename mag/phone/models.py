@@ -1,11 +1,21 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Product(models.Model):
-    title = models.CharField(max_length=100)
+    seller = models.ForeignKey(User, on_delete=models.CASCADE, default='3')
+    name = models.CharField(max_length=100)
     price = models.IntegerField()
-    descriptions = models.CharField(max_length=250)
+    description = models.CharField(max_length=250)
     image = models.ImageField(blank=True, upload_to='images')
 
     def __str__(self):
         return self.title
+
+class OrderDetail(models.Model):
+    customer_username = models.CharField(max_length=200)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    amount = models.IntegerField()
+    stripe_payment_intent = models.CharField(max_length=200)
+    has_paid = models.BooleanField(default=False)
+    created_at= models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

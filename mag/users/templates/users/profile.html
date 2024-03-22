@@ -1,0 +1,24 @@
+{% extends "phone/base.html" %}
+
+{% block content %}
+
+    {% if user.profile %}
+    <div class ='grid p-10 grid-cols-1 lg:grid-cols-3 sm:grid-cols-1'>
+        <div class="rounded shadow-lg">
+            <div>
+                {% if user.profile.image %}
+                <img src="{{ user.profile.image.url }}" alt="" srcset="">
+                {% endif %}
+            </div>
+            <h1 class="font-bold text-xl m-2">{{ user.username }}</h1>
+        </div>
+    </div>
+    {% else %}
+        <form action="" method="">
+            <h1>{{ user.username }}</h1>
+            <h1>{{ user.profile.image }}</h1>
+            <h1>{{ user.profile.contact_number }}</h1>
+        </form>
+    {% endif %}
+
+{% endblock content %}
